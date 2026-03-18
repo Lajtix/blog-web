@@ -1,0 +1,13 @@
+### 1. Create a new Blog Post
+POST http://localhost:5003/posts
+Content-Type: application/json
+
+{
+  "title": "Victory over the Folders",
+  "content": "I successfully connected Express, Prisma, and Docker on my Mac!"
+}
+
+###
+
+### 2. Get all Blog Posts
+GET http://localhost:5003/posts
