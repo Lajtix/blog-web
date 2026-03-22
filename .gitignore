@@ -1,0 +1,15 @@
+#Ignore library folders
+node_modules/
+
+# Keep environment variables out of version control
+.env
+
+# OS & IDE "Trash"
+.DS_Store
+.idea/
+.vscode/
+*.log
+
+# Build/Distribution files
+dist/
+build/
