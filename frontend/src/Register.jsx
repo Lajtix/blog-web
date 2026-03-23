@@ -1,7 +1,7 @@
 
 import {useState} from 'react';
 
-export default function Register() {
+export default function Register({handleLogin}) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -27,6 +27,8 @@ export default function Register() {
         if(response.ok) {
             const data = await response.json();
             console.log("Success:", data);
+            await handleLogin(email, password);
+            alert("Registration successful!");
         } else {
             const errorData = await response.json();
             alert("Error: " + errorData.message);
@@ -38,12 +40,12 @@ export default function Register() {
 
     return (
         <div className="min-h-screen bg-slate-50 p-8">
-            <div className="max-w-xs mx-auto bg-stone-50 border-amber-500 border-0 rounded-xl flex flex-col justify-center items-center ">
-                <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="username" className="border-slate-200 focus:border-amber-400  border-2 rounded-lg p-2 mb-6 mt-6 w-3xs outline-none transition-all"/>
-                <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email" className="border-slate-200 focus:border-amber-400  border-2 rounded-lg p-2 mb-6 w-3xs outline-none transition-all"/>
-                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="border-slate-200 focus:border-amber-400  border-2 rounded-lg p-2 mb-6 w-3xs outline-none transition-all"/>
-                <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="confirm password" className="border-slate-200 focus:border-amber-400 border-2 rounded-lg p-2 mb-6 w-3xs outline-none transition-all"/>
-                <button onClick={() => handleRegister()} className="bg-amber-400 text-white rounded-lg p-2 w-3xs mb-6 hover:bg-amber-500 font-bold transition-all">Register</button>
+            <div className="max-w-xs mx-auto bg-stone-50 border-blue-500 border-0 rounded-xl flex flex-col justify-center items-center ">
+                <input onChange={(e) => setUsername(e.target.value)} type="text" placeholder="username" className="border-slate-200 focus:border-blue-400  border-2 rounded-lg p-2 mb-6 mt-6 w-3xs outline-none transition-all"/>
+                <input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="email" className="border-slate-200 focus:border-blue-400  border-2 rounded-lg p-2 mb-6 w-3xs outline-none transition-all"/>
+                <input onChange={(e) => setPassword(e.target.value)} type="password" placeholder="password" className="border-slate-200 focus:border-blue-400  border-2 rounded-lg p-2 mb-6 w-3xs outline-none transition-all"/>
+                <input onChange={(e) => setConfirmPassword(e.target.value)} type="password" placeholder="confirm password" className="border-slate-200 focus:border-blue-400 border-2 rounded-lg p-2 mb-6 w-3xs outline-none transition-all"/>
+                <button onClick={() => handleRegister()} className="bg-blue-500 text-white rounded-lg p-2 w-3xs mb-6 hover:bg-blue-600 font-bold transition-all">Register</button>
             </div>
         </div>
     )
