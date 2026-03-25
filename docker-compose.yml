@@ -1,4 +1,5 @@
 services:
+  # 1. DATABASE
   db:
     image: postgres:16
     container_name: blog_db
@@ -11,6 +12,32 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data/
-    
+
+    #2. EXPRESS BACKEND
+  backend:
+    build: ./backend
+    container_name: blog_backend
+    ports:
+      - "5003:5003"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/blog_db
+      - PORT=5003
+    depends_on:
+      - db
+
+  #3.REACT FRONTEND
+  frontend:
+    build: ./frontend
+    container_name: blog_frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_BACKEND_URL=http://localhost:5003
+    depends_on:
+      - backend
+
 volumes:
   postgres_data:

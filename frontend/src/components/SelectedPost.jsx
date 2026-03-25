@@ -9,18 +9,18 @@ export const SelectedPost = ({selectedPost, user, setSelectedPost, likePost, del
                     <X size="20"/>
                 </button>
             </div>
-            <div className="overflow-y-auto px-6">
+            <div className="overflow-y-auto">
                 <div className="relative">
                     {selectedPost.image && (
-                    <img src={selectedPost.image} alt="Post Image" className="max-w-full h-64 rounded-lg mb-4 mx-auto"/>
+                    <img src={selectedPost.image} alt="Post Image" className="w-full h-64 rounded-t-lg mb-4 mx-auto object-cover"/>
                     )}
                 </div>
-
-                <div className="flex justify-between items-center">
-                    <h2 className="text-3xl font-extrabold text-slate-900 mb-4">{selectedPost.title}</h2>
+                <div className="p-6">
+                    <div className="flex justify-between items-center">
+                        <h2 className="text-3xl font-extrabold text-slate-900 mb-4">{selectedPost.title}</h2>
+                    </div>
+                    <p className="text-slate-600 leading-relaxed text-lg">{selectedPost.content}</p>
                 </div>
-
-                <p className="text-slate-600 leading-relaxed text-lg">{selectedPost.content}</p>
             </div>
 
             <div className='items-center grid grid-cols-2 w-full bg-slate-100 pt-2 px-6 py-2'>

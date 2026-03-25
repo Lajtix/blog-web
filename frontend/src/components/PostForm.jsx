@@ -72,25 +72,29 @@ export const PostForm = ({user, fetchPosts}) => {
                 ></textarea>
                 <div className='flex flex-row'>
                     <div className="my-auto">
-                    <input ref={fileInputRef} onChange={handleImageUpload} type="file" accept='image/*' className="block flex-1 my-auto text-sm text-slate-500
-                                   file:mr-4 file:py-2 file:px-4
-                                   file:rounded-lg file:border-0
-                                   file:text-sm file:font-bold
-                                   file:bg-blue-50 file:text-blue-700
-                                   hover:file:bg-blue-100 cursor-pointer"/>
+                        <label className="block flex-1 my-auto
+                                   mr-4 py-2 px-4
+                                   rounded-lg border-0
+                                   text-sm font-bold
+                                   bg-blue-50 text-blue-700
+                                   hover:bg-blue-100 cursor-pointer"> Upload Image
+                            <input placeholder="Upload an image" ref={fileInputRef} onChange={handleImageUpload} type="file" accept='image/*' className="
+                                   hidden" />
+                        </label>
+
                         <div>
                             {uploadedImage && (
-                                <button onClick={handleCancelImageUpload} className="rounded-lg bg-red-50 px-4 py-2 border-0 text-sm font-bold text-red-700 mt-4 hover:bg-red-100">Remove image</button>
+                                <button onClick={handleCancelImageUpload} placeholder="Upload an image" className="rounded-lg bg-red-50 px-4 py-2 border-0 text-sm font-bold text-red-700 mt-4 hover:bg-red-100 cursor-pointer">Remove image</button>
                             )}
                         </div>
                     </div>
                     {uploadedImage && (
-                        <img src={uploadedImage} alt="Post Image" className="w-50 h-48 object-cover rounded-lg mb-4 ml-auto " />
+                        <img src={uploadedImage} alt="Post Image" className="w-100 h-48 object-cover ml-auto rounded-lg mb-4" />
                     )}
 
                 </div>
 
-                <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg font-bold hover:bg-blue-700 transition">
+                <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg font-bold hover:bg-blue-700 transition cursor-pointer">
                     Publish Post
                 </button>
             </div>

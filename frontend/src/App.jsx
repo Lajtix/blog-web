@@ -41,7 +41,6 @@ function App() {
     const logout = () => {
         setUser(null);
         localStorage.removeItem('token');
-        // We will add "localStorage.removeItem" here later for JWT!
     };
 
     const handleLogin = async (email, password) => {
@@ -93,8 +92,6 @@ function App() {
                             </>
                         ) : (
                             <>
-                                <Link to="/testcard" className="text-slate-600 hover:text-blue-600">testcard</Link>
-                                <Link to="/register" className="text-slate-600 hover:text-blue-600">Register</Link>
                                 <Link to="/login" className="text-slate-600 hover:text-blue-600">Login</Link>
                                 <Link to="/test" className="text-slate-600 hover:text-blue-600">Test</Link>
                             </>
@@ -105,8 +102,6 @@ function App() {
 
             {/* PAGE CONTENT */}
             <Routes>
-                <Route path="/testcard" element={<TestCard />} />
-                <Route path="/test" element={<Test />} />
                 <Route path="/" element={<Home user={user} />} />
                 <Route path="/register" element={<Register handleLogin={handleLogin}/>} />
                 <Route path="/login" element={<Login setUser={setUser} handleLogin={handleLogin}/>} />
